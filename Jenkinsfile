@@ -40,5 +40,11 @@ pipeline {
                 build 'Demo_2'
            }
         }
-    }
+        stage ("Triger App Build") {
+            steps {
+                
+                build 'Demo_2'
+           }
+        }   
+}
 }
