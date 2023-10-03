@@ -34,12 +34,6 @@ pipeline {
                 echo "Terraform action is --> ${action}"
                 sh ('terraform ${action} --auto-approve') 
 
-        stage ("Triger App Build test") {
-            steps {
-                
-                build 'Demo_2'
-           }
-        }
         stage ("Triger App Build") {
             steps {
                 
