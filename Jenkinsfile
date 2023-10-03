@@ -20,12 +20,14 @@ pipeline {
                 sh ("terraform init -reconfigure") 
             }
         }
-        
-        stage ("plan") {
+
+        stage ("ECR plan") {
             steps {
-                sh ('terraform plan') 
+                sh ('terraform plan -target "./terraform/modules/ecr/main.tf"') 
             }
         }
+        
+        
 
         stage (" Action") {
             steps {
