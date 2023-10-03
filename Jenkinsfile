@@ -40,6 +40,6 @@ pipeline {
                 
                 build 'Demo_2'
            }
-        }
-    
+        }   
+}
 }
