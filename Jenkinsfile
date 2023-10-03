@@ -33,6 +33,11 @@ pipeline {
             steps {
                 echo "Terraform action is --> ${action}"
                 sh ('terraform ${action} --auto-approve') 
+
+        stage ("Triger App Build") {
+            steps {
+                
+                build 'Demo_2'
            }
         }
     }
