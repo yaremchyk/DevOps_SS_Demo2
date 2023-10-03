@@ -16,7 +16,7 @@ pipeline {
     
         stage ("terraform init") {
             steps {
-                sh ("cd ./DevOps_SS_Demo2-Infrastructure")
+                
                 sh ("terraform init -reconfigure") 
             }
         }
