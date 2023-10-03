@@ -23,7 +23,7 @@ pipeline {
 
         stage ("ECR plan") {
             steps {
-                sh ('terraform plan -target="module.ecr') 
+                sh ('terraform plan -target="module.ecr"') 
             }
         }
         
