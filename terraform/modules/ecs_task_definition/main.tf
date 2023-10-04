@@ -33,7 +33,7 @@ resource "aws_ecs_task_definition" "app_task" {
   [
     {
       "name": "demo-2-task",
-      "image": "025389115636.dkr.ecr.eu-north-1.amazonaws.com/app-repo:latest",
+      "image": "${data.aws_ecr_repository.service.repository_url}:latest@${data.aws_ecr_image.service_image.image_digest}",
       "essential": true,
       "portMappings": [
         {
