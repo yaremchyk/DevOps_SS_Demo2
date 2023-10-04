@@ -1,24 +1,24 @@
-# Змінні для VPC
+# Variables for VPC
 variable "vpc_cidr_block" {
-  description = "CIDR-блок для VPC"
+  description = "CIDR block for VPC"
   type        = string
-  default     = "10.0.0.0/16"  # Замініть на бажаний CIDR-блок
+  default     = "10.0.0.0/16"  # Replace with your desired CIDR block
 }
 
 variable "namespace" {
-  description = "Простір імен"
+  description = "Namespace"
   type        = string
-  default     = "myapp"  # Замініть на ваш простір імен
+  default     = "myapp"  # Replace with your namespace
 }
 
 variable "environment" {
-  description = "Середовище"
+  description = "Environment"
   type        = string
-  default     = "dev"  # Замініть на ваше середовище
+  default     = "dev"  # Replace with your environment
 }
 
 variable "az_count" {
-  description = "Кількість доступних зон доступності (availability zones)"
+  description = "Number of available availability zones"
   type        = number
-  default     = 2  # Замініть на потрібну кількість
+  default     = 1  # Replace with the desired count
 }
