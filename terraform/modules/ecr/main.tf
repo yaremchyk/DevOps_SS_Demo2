@@ -1,8 +1,15 @@
 resource "aws_ecr_repository" "app_ecr_repo" {
-  name = "app-repo"
+  name        = "app-repo"
   force_delete = true
-  vpc_id = aws_vpc.default.id
-  subnet_id      = aws_subnet.private[count.index].id
+  vpc_config {
+    count = var.az_count
+    subnet_ids         = aws_subnet.private[count.index].id  # Attach ECR to public subnets
+    security_group_ids = []  # Add security group IDs if needed
+  }
+
+  tags = {
+    Name = "${var.namespace}_ECRRepo_${var.environment}"
+  }
 }
 
 resource "aws_ecr_lifecycle_policy" "lanandra_ip_reader" {
