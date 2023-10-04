@@ -25,21 +25,24 @@ pipeline {
             steps {
                 sh ('terraform plan -target="module.ecr"') 
             }
-        }
-
-        stage ("Network plan") {
+        
+        stage ("ECS&Task Definition plan") {
             steps {
-                sh ('terraform plan -target="module.network"') 
+                sh ('terraform plan -target="module.ecs"') 
+                sh ('terraform plan -target="module.ecs_task_definition"') 
             }
         }
-
-        stage (" Action") {
+        stage ("Apply or Destroy") {
             steps {
                 echo "Terraform action is --> ${action}"
-                sh ('terraform ${action} --auto-approve') 
-
-        
+                sh ('terraform ${action} --auto-approve')         
            }
-        }   
+        } 
+        stage ("Trigger app build") {
+            steps {
+                
+                build 'Demo_2'         
+           }
+        }
 }
 }
