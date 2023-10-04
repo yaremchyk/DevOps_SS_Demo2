@@ -26,8 +26,12 @@ pipeline {
                 sh ('terraform plan -target="module.ecr"') 
             }
         }
-        
-        
+
+        stage ("Network plan") {
+            steps {
+                sh ('terraform plan -target="module.network"') 
+            }
+        }
 
         stage (" Action") {
             steps {
