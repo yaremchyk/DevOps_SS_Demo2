@@ -1,5 +1,5 @@
 module "network" {
-  source = "../modules/network"
+  source = "../network/main.tf"
 }
 
 resource "aws_ecr_repository" "app_ecr_repo" {
