@@ -17,8 +17,8 @@ resource "aws_default_subnet" "default_subnet_b" {
 
 resource "aws_security_group" "load_balancer_security_group" {
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8002
+    to_port     = 8002
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"] 
   }
@@ -33,7 +33,7 @@ resource "aws_security_group" "load_balancer_security_group" {
 
 resource "aws_lb_target_group" "target_group" {
   name        = "target-group"
-  port        = 80
+  port        = 8002
   protocol    = "HTTP"
   target_type = "ip"
   deregistration_delay = 5
@@ -53,7 +53,7 @@ resource "aws_lb_target_group" "target_group" {
 
 resource "aws_lb_listener" "listener" {
   load_balancer_arn = "${aws_alb.application_load_balancer.arn}" 
-  port              = "80"
+  port              = "8002"
   protocol          = "HTTP"
   default_action {
     type             = "forward"
