@@ -42,7 +42,7 @@ pipeline {
         script {
             try {
                 echo "Terraform action is --> ${action}"
-                sh ('terraform ${action} --auto-approve')
+                sh ('terraform apply --auto-approve')
             } catch (err) {
                 echo err.getMessage()
             }
