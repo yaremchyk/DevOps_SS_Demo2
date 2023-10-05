@@ -17,7 +17,7 @@ pipeline {
         stage ("Terraform init") {
             steps {
                 
-                sh ("terraform init -reconfigure -lock=false -auto-approve") 
+                sh ("terraform init ") 
             }
         }
 
