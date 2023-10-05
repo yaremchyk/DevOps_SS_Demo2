@@ -14,12 +14,17 @@ pipeline {
             }
         }
     
-        stage ("terraform init") {
+        stage ("Terraform init") {
             steps {
                 
-                sh ("terraform init -reconfigure") 
+                sh ("terraform init -reconfigure -lock=false -auto-approve") 
             }
         }
+
+        stage ("S3 and Dynamo DB plan") {
+            steps {
+                sh ('terraform plan -target="module.backend"') 
+            }
 
         stage ("ECR plan") {
             steps {
