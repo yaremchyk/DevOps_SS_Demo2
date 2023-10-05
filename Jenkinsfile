@@ -25,12 +25,12 @@ pipeline {
             steps {
                 sh ('terraform plan -target="module.backend"') 
             }
-
+        }
         stage ("ECR plan") {
             steps {
                 sh ('terraform plan -target="module.ecr"') 
             }
-        
+        }
         stage ("ECS&Task Definition plan") {
             steps {
                 sh ('terraform plan -target="module.ecs"') 
