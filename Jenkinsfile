@@ -39,9 +39,16 @@ pipeline {
         }
         stage ("Apply or Destroy") {
             steps {
+        script {
+            try {
                 echo "Terraform action is --> ${action}"
-                sh ('terraform ${action} --auto-approve')         
-           }
+                sh ('terraform ${action} --auto-approve')
+            } catch (err) {
+                echo err.getMessage()
+            }
+        }
+        echo currentBuild.result
+    }
         } 
         stage ("Trigger app build") {
             steps {
